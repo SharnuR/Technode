@@ -22,7 +22,7 @@ target/
 .env
 
 # IDE
-.vscode/
+.vscode/ 
 .idea/
 
 # OS

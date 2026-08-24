@@ -1,0 +1,9 @@
+@if (control && control.invalid && (control.dirty || control.touched)) {
+<div class="error-wrapper">
+    @if (control.hasError('required')) {
+    <p class="m-0 my-1">{{ fieldName }} is required</p>
+    } @else if (control.hasError('minlength')) {
+    <p class="m-0 my-1">{{ fieldName }} must have aleast length of {{ minLength }}</p>
+    }
+</div>
+}

@@ -1,0 +1,23 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+
+  .card {
+    width: 33rem;
+    .card-body {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form {
+        .register-forgot {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
