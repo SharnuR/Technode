@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FormErrorsComponent } from '../../shared/form-errors-component/form-errors-component';
+import { ToastrService } from 'ngx-toastr';
 
 interface IRegister {
-  username: String;
-  password: String;
-  confirmPwd: String;
+  username: string;
+  password: string;
+  confirmPwd: string;
 }
 
 @Component({
@@ -13,6 +14,8 @@ interface IRegister {
   imports: [FormsModule, FormErrorsComponent],
   templateUrl: './register.html',
   styleUrl: './register.scss',
+  animations: [{ name: 'flyInOut', definitions: [] }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Register {
   user: IRegister = {
@@ -20,21 +23,19 @@ export class Register {
     password: '',
     confirmPwd: '',
   };
-  links: string;
+  links: string =
+    '1. https://www.youtube.com/shorts/ZbY9e-L-i8s ' +
+    '2. https://www.youtube.com/shorts/ONaSgDK-VzA';
 
-  constructor() {
-    this.links =
-      '1. https://www.youtube.com/shorts/ZbY9e-L-i8s ' +
-      '2. https://www.youtube.com/shorts/ONaSgDK-VzA';
+  constructor(private toastr: ToastrService) {}
+
+  onFieldChange(fieldName: keyof typeof this.user, value: string) {
+    this.user[fieldName] = value;
   }
 
   register(form: NgForm) {
     if (form.valid) {
-      alert('form :- ' + form.value.username);
+      this.toastr.success('form :- ' + form.value.username);
     }
-  }
-
-  getFormControl(registerForm: NgForm, name: string) {
-    return registerForm.controls[name];
   }
 }

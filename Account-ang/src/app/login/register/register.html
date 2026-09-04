@@ -6,28 +6,28 @@
       <form #registerForm="ngForm">
         <div class="form-group d-flex flex-column">
           <label for="username"> User name</label>
-          <input type="text" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" minlength="3"
-            required />
+          <input type="text" id="username" name="username" [ngModel]="user.username"
+            (ngModelChange)="onFieldChange('username', $event)" #username="ngModel" minlength="3" required />
 
           <app-form-errors [control]="username.control" fieldName="username" [minLength]="3"></app-form-errors>
         </div>
 
         <div class="form-group d-flex flex-column">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel"
-            minlength="3" required />
+          <input type="password" id="password" name="password" [ngModel]="user.password"
+            (ngModelChange)="onFieldChange('password', $event)" #password="ngModel" minlength="3" required />
 
           <app-form-errors [control]="password.control" fieldName="password" [minLength]="3"></app-form-errors>
         </div>
 
         <div class="form-group d-flex flex-column">
           <label for="confirmPwd">Confirm Password</label>
-          <input type="password" id="confirmPwd" name="confirmPwd" [(ngModel)]="user.confirmPwd" #confirmPwd="ngModel"
-            minlength="3" required />
+          <input type="password" id="confirmPwd" name="confirmPwd" [ngModel]="user.confirmPwd"
+            (ngModelChange)="onFieldChange('confirmPwd', $event)" #confirmPwd="ngModel" minlength="3" required />
           <app-form-errors [control]="confirmPwd.control" fieldName="confirmPwd" [minLength]="3"></app-form-errors>
         </div>
 
-        <button class="btn btn-primary my-1" (click)="register(registerForm)">Register</button>
+        <button class="btn btn-primary my-1" (click)="register(registerForm)">Submit</button>
 
         <div>Link: {{ links }}</div>
       </form>

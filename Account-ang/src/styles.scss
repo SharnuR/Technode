@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+  // Use min-height instead of height to prevent content clipping on small screens
+  min-height: 100vh; 
+  box-sizing: border-box;
+}

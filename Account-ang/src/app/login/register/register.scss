@@ -1,6 +1,11 @@
 .register-wrapper {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
   .card {
     width: 33rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 
     .error {
       color: #ff0000;
