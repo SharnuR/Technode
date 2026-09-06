@@ -10,4 +10,21 @@ html[data-theme='light'] {
 
     --header-bg: #2563eb;
     --footer-bg: #e0e7ff;
+
+    --card-header-bg: #f8f9fa;
+    --bg-card: #ffffff;
+
+    --text-main: #212529;
+
+    --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    /* Bootstrap */
+    --bs-body-bg: var(--bg);
+    --bs-body-color: var(--text);
+
+    --bs-card-bg: var(--bg-card);
+    --bs-card-color: var(--text);
+
+    --bs-border-color: var(--border);
+    --bs-secondary-color: var(--muted);
 }

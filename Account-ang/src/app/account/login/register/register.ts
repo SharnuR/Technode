@@ -17,7 +17,6 @@ interface IRegister {
   imports: [FormsModule, FormErrorsComponent],
   templateUrl: './register.html',
   styleUrl: './register.scss',
-  animations: [{ name: 'flyInOut', definitions: [] }],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Register {
@@ -46,13 +45,15 @@ export class Register {
       return;
     }
 
-    this.authService.register({ username: this.user.username, password: this.user.password }).subscribe((registered) => {
-      if (registered) {
-        this.notificationService.success('Registration successful.');
-        this.accountNavigationService.goToRoute('login');
-      } else {
-        this.notificationService.error('That username is already registered.');
-      }
-    });
+    this.authService
+      .register({ username: this.user.username, password: this.user.password })
+      .subscribe((registered) => {
+        if (registered) {
+          this.notificationService.success('Registration successful.');
+          this.accountNavigationService.goToRoute('login');
+        } else {
+          this.notificationService.error('That username is already registered.');
+        }
+      });
   }
 }

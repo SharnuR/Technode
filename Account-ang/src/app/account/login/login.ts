@@ -14,7 +14,6 @@ import { AuthService } from '../services/auth.service';
   imports: [RouterModule, FormsModule, FormErrorsComponent],
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  animations: [{ name: 'flyInOut', definitions: [] }],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Login {
@@ -36,6 +35,7 @@ export class Login {
     if (form?.valid) {
       this.authService.login(this.loginData).subscribe((loggedIn) => {
         if (loggedIn) {
+          this.accountNavigationService.goToRoute('dashboard');
           this.notificationService.success('Login successful.');
         } else {
           this.notificationService.error('Invalid username or password.');

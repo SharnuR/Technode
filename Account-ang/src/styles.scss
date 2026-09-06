@@ -53,4 +53,12 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  color-scheme: var(--color-scheme);
+
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+
+  font: var(--mat-sys-body-medium);
+  margin: 0;
 }

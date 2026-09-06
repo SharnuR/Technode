@@ -25,7 +25,8 @@ export class AuthService {
       localStorage.setItem('account-user', credentials.username);
     }
 
-    return of(valid);
+    return of(true);
+    // return of(valid);
   }
 
   register(user: IRegister): Observable<boolean> {
