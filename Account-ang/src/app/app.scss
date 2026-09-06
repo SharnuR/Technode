@@ -1,0 +1,19 @@
+.app-shell {
+	min-height: 100vh;
+	background: var(--bg);
+	color: var(--text);
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.theme-toggle {
+	position: fixed;
+	z-index: 10;
+	top: 1rem;
+	right: 1rem;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	padding: 0.5rem 0.75rem;
+	background: var(--surface);
+	color: var(--text);
+	cursor: pointer;
+}

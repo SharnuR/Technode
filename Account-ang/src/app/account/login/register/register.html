@@ -3,7 +3,7 @@
     <div class="card-header">Register</div>
 
     <div class="card-body">
-      <form #registerForm="ngForm">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
         <div class="form-group d-flex flex-column">
           <label for="username"> User name</label>
           <input type="text" id="username" name="username" [ngModel]="user.username"
@@ -27,7 +27,7 @@
           <app-form-errors [control]="confirmPwd.control" fieldName="confirmPwd" [minLength]="3"></app-form-errors>
         </div>
 
-        <button class="btn btn-primary my-1" (click)="register(registerForm)">Submit</button>
+        <button class="btn btn-primary my-1" type="submit">Submit</button>
 
         <div>Link: {{ links }}</div>
       </form>
