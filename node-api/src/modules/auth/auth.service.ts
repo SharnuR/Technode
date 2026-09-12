@@ -1,6 +1,10 @@
+import type { LoginInput } from "./auth.types.js";
+
 export class AuthService {
-  async validateUser(email: string, password: string) {
-    if (email === "user@example.com" && password === "passwd") {
+  async validateUser(input: LoginInput) {
+    const { email, password } = input;
+
+    if (email === "user@example.com" && password === "123") {
       return {
         success: true,
         token: "jwt-token-token-abc-123",

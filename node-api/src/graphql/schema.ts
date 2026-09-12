@@ -4,19 +4,24 @@ email: String!
 name: String!
 }
 
-type LoginResponse {
+type AuthPayload  {
     success: Boolean!
-    error: String!
-    token: String!
+    error: String
+    token: String
     user: User
 }
+
+input LoginInput {
+    email: String!
+    password: String!
+  }
 
 type Query {
     healthCheck: String!
 }
 
 type Mutation {
-    login(email: String!, password: String!): LoginResponse!
+    login(email: String!, password: String!): AuthPayload !
 }
 `;
 

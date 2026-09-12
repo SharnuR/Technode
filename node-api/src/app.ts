@@ -2,7 +2,6 @@ import fastify from "fastify";
 import cors from "@fastify/cors";
 import mercurius from "mercurius";
 
-import { loginRestController } from "./modules/auth/auth.controller.js";
 import schema from "./graphql/schema.js";
 import resolvers from "./graphql/resolvers.js";
 import { registerSwagger } from "./config/swagger.js";
