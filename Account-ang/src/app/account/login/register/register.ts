@@ -21,9 +21,9 @@ interface IRegister {
 })
 export class Register {
   user: IRegister = {
-    email: '',
-    password: '',
-    confirmPwd: '',
+    email: 'test@example.com',
+    password: 'test',
+    confirmPwd: 'test',
   };
   links: string =
     '1. https://www.youtube.com/shorts/ZbY9e-L-i8s ' +
@@ -45,15 +45,18 @@ export class Register {
       return;
     }
 
-    this.authService
-      .register({ email: this.user.email, password: this.user.password })
-      .subscribe((registered) => {
-        if (registered) {
+    this.authService.register({ email: this.user.email, password: this.user.password }).subscribe({
+      next: (data) => {
+        if (data) {
           this.notificationService.success('Registration successful.');
           this.accountNavigationService.goToRoute('login');
         } else {
           this.notificationService.error('That email is already registered.');
         }
-      });
+      },
+      error: (err) => {
+        this.notificationService.error(err.error);
+      },
+    });
   }
 }

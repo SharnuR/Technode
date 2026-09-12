@@ -4,7 +4,7 @@ export class AuthService {
   async validateUser(input: LoginInput) {
     const { email, password } = input;
 
-    if (email === "user@example.com" && password === "123") {
+    if (email === "test@example.com" && password === "test") {
       return {
         success: true,
         token: "jwt-token-token-abc-123",

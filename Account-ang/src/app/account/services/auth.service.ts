@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   loginApi(credentials: ILogin): Observable<any> {
-    return this.http.post('http://localhost:3000/api/v1/auth/login', credentials);
+    return this.http.post('http://localhost:3000/graphql/login', credentials);
   }
 
   register(user: IRegister): Observable<boolean> {
@@ -44,7 +44,11 @@ export class AuthService {
       localStorage.setItem(this.storageKey, JSON.stringify([...users, user]));
     }
 
-    return of(true);
+    return this.registerApi(user);
+  }
+
+  registerApi(user: IRegister): Observable<any> {
+    return this.http.post('http://localhost:3000/api/v1/auth/register', user);
   }
 
   private readUsers(): IRegister[] {

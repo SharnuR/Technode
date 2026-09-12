@@ -18,8 +18,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class Login {
   loginData: ILogin = {
-    email: 'user@example.com',
-    password: '123',
+    email: 'test@example.com',
+    password: 'test',
   };
 
   constructor(
