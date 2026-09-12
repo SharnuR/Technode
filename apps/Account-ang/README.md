@@ -103,6 +103,13 @@ Account-ang/
 │   │   ├── core/
 │   │   │   └── services/
 │   │   │       └── theme.service.ts
+│   │   ├── feature/
+│   │   │   ├── dashboard/
+│   │   │   │   ├── dashboard.html
+│   │   │   │   ├── dashboard.scss
+│   │   │   │   ├── dashboard.spec.ts
+│   │   │   │   └── dashboard.ts
+│   │   │   └── feature_account.ts
 │   │   ├── shared/
 │   │   │   ├── form-errors-component/
 │   │   │   │   ├── form-errors-component.html

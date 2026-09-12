@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   loginApi(credentials: ILogin): Observable<any> {
-    return this.http.post('http://localhost:3000/graphql/login', credentials);
+    return this.http.post('http://localhost:3000/api/v1/auth/login', credentials);
   }
 
   register(user: IRegister): Observable<boolean> {

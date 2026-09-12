@@ -20,10 +20,12 @@ node-api/
 │   │   └── auth/
 │   │       ├── auth.controller.ts
 │   │       ├── auth.routes.ts
-│   │       └── auth.service.ts
+│   │       ├── auth.service.ts
+│   │       └── auth.types.ts
 │   ├── app.ts
 │   └── index.ts
 ├── .env
+├── .gitignore
 ├── package-lock.json
 ├── package.json
 ├── README.md
