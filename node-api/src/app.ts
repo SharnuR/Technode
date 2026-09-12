@@ -22,7 +22,12 @@ export async function buildApp() {
     schema,
     resolvers,
     graphiql: true,
+    path: "/graphql",
   });
+
+  await app.ready();
+
+  console.log("routes: \n", app.printRoutes());
 
   return app;
 }

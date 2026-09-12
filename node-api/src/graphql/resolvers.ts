@@ -7,9 +7,7 @@ const resolvers = {
 
   Mutation: {
     login: async (_parent: any, args: any) => {
-      const { email, password } = args;
-
-      const result = await authService.validateUser(email, password);
+      const result = await authService.validateUser(args);
     },
   },
 };
