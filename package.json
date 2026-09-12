@@ -1,0 +1,13 @@
+{
+  "name": "accounting-multi-tech",
+  "private": true,
+  "packageManager": "pnpm@10",
+  "scripts": {
+    "dev:angular": "pnpm --filter Account-ang start",
+    "dev:react": "pnpm --filter Account-react dev",
+    "dev:api": "pnpm --filter node-api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test"
+  }
+}
