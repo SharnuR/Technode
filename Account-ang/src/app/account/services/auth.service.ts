@@ -2,9 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ILogin } from '../models/login.model';
+import { HttpClient } from '@angular/common/http';
 
 export interface IRegister {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -14,24 +15,28 @@ export interface IRegister {
 export class AuthService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly storageKey = 'account-users';
+  private http = inject(HttpClient);
 
-  login(credentials: ILogin): Observable<boolean> {
+  login(credentials: ILogin): Observable<any> {
     const users = this.readUsers();
     const valid = users.some(
-      (user) => user.username === credentials.username && user.password === credentials.password,
+      (user) => user.email === credentials.email && user.password === credentials.password,
     );
 
     if (valid && isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('account-user', credentials.username);
+      localStorage.setItem('account-user', credentials.email);
     }
 
-    return of(true);
-    // return of(valid);
+    return this.loginApi(credentials);
+  }
+
+  loginApi(credentials: ILogin): Observable<any> {
+    return this.http.post('http://localhost:3000/api/v1/auth/login', credentials);
   }
 
   register(user: IRegister): Observable<boolean> {
     const users = this.readUsers();
-    if (users.some((existingUser) => existingUser.username === user.username)) {
+    if (users.some((existingUser) => existingUser.email === user.email)) {
       return of(false);
     }
 

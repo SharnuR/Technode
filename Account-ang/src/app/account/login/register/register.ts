@@ -7,7 +7,7 @@ import { AccountNavigationService } from '../../services/account-navigation.serv
 import { AuthService } from '../../services/auth.service';
 
 interface IRegister {
-  username: string;
+  email: string;
   password: string;
   confirmPwd: string;
 }
@@ -21,7 +21,7 @@ interface IRegister {
 })
 export class Register {
   user: IRegister = {
-    username: '',
+    email: '',
     password: '',
     confirmPwd: '',
   };
@@ -46,13 +46,13 @@ export class Register {
     }
 
     this.authService
-      .register({ username: this.user.username, password: this.user.password })
+      .register({ email: this.user.email, password: this.user.password })
       .subscribe((registered) => {
         if (registered) {
           this.notificationService.success('Registration successful.');
           this.accountNavigationService.goToRoute('login');
         } else {
-          this.notificationService.error('That username is already registered.');
+          this.notificationService.error('That email is already registered.');
         }
       });
   }

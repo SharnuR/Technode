@@ -18,8 +18,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class Login {
   loginData: ILogin = {
-    username: '',
-    password: '',
+    email: 'user@example.com',
+    password: '123',
   };
 
   constructor(
@@ -32,18 +32,26 @@ export class Login {
   ngOnInit() {}
 
   login(form: NgForm) {
-    if (form?.valid) {
-      this.authService.login(this.loginData).subscribe((loggedIn) => {
-        if (loggedIn) {
-          this.accountNavigationService.goToRoute('dashboard');
-          this.notificationService.success('Login successful.');
-        } else {
-          this.notificationService.error('Invalid username or password.');
-        }
-      });
-    } else {
+    if (!form?.valid) {
       this.notificationService.warning('Please complete the form.');
+      return;
     }
+
+    this.authService.login(this.loginData).subscribe({
+      next: (data) => {
+        if (!data) {
+          this.notificationService.error('Invalid email or password.');
+        }
+
+        this.notificationService.success('Login successful.');
+        this.accountNavigationService.goToRoute('dashboard');
+      },
+
+      error: (err) => {
+        console.log('err:- ', err);
+        this.notificationService.error(err.error.error);
+      },
+    });
   }
 
   register() {
